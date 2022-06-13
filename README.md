@@ -19,7 +19,7 @@
 
 <ul>
  <li>Admin login.</li>
- <li>Admin password Chane password.</li>
+ <li>Admin password Change password.</li>
  <li>Admin profile.</li>
  <li>Dashboard View</li>
  <li>Users list.</li>
