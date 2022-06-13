@@ -40,7 +40,7 @@ if(Session::get('roleid') != '1'){
                     <div class="d-sm-flex justify-content-between align-items-center mb-4">
                       
 
-
+</div>
 
 
 
@@ -52,8 +52,13 @@ if ($sId === '1'||$sId ==='2') { ?>
 
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['addUser'])) {
-
-  $userAdd = $users->addNewUserByAdmin($_POST);
+    if($_POST['nameofins'])==''){
+    $userAdd = $users->addNewUserByAdmin($_POST);
+}
+else if($_POST['nameofins'])!=''){
+    $userAdd = $users->addNewInsByAdmin($_POST);
+}
+  
 }
 
 if (isset($userAdd)) {
@@ -66,7 +71,7 @@ if (isset($userAdd)) {
 
  <div class="card ">
    <div class="card-header">
-          <h3 class='text-center'>Add New User<a href="dash.php" class="btn btn-primary" style="margin-right: 5px; float: right;">Back</a></h3>
+          <h3 class='text-center'>Add New User<a href="index.php" class="btn btn-primary" style="margin-right: 5px; float: right;">Back</a></h3>
         </div>
         <div class="cad-body">
 
@@ -84,6 +89,26 @@ if (isset($userAdd)) {
                   <input type="text" name="username"  class="form-control">
                 </div>
                 <div class="form-group">
+                  <label for="username">User type</label>
+                  
+                                     <script type="text/javascript">
+                    function CheckColors(val){
+                     var element=document.getElementById('color');
+                     if(val=='2')
+                       element.style.display='block';
+                     else  
+                       element.style.display='none';
+                    }
+
+                    </script> 
+                    </head>
+                    <body>
+                      <select name="color" class="form-control" onchange='CheckColors(this.value);'> 
+                        <option value="1">Personal</option>
+                        <option value="2">Institiution</option>
+                      </select>
+                    <input type="text" class="form-control" name="nameofins" placeholder="Name of the nstitiution" id="color" style='display:none;'/>
+                                    <div class="form-group">
                   <label for="email">Email address</label>
                   <input type="email" name="email"  class="form-control">
                 </div>

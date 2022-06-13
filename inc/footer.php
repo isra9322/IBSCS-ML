@@ -1,6 +1,6 @@
 <div class="well card-footer" style="margin-right:-12% ;margin-left:-12%; ">
   <p>astu
-      <span class="" style="align-content: center; margin-left: 50%;">copyright resrved 2022</span>
+      <span class="float-right">compyright resrved2022</span>
   </p>
 </div>
 

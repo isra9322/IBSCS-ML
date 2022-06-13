@@ -27,7 +27,7 @@ if(Session::get('roleid') != '1'){
                 </a>
                 <hr class="sidebar-divider my-0">
                  <ul class="nav navbar-nav text-light" id="accordionSidebar">
-                    <li class="nav-item" role="presentation"><a class="nav-link active" href="dash.php"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a><a class="nav-link active" href="institiution.php"><i class="far fa-building"></i><span><strong>Institutions</strong></span></a>
+                    <li class="nav-item" role="presentation"><a class="nav-link active" href="index.php"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a><a class="nav-link active" href="institiution.php"><i class="far fa-building"></i><span><strong>Institutions</strong></span></a>
                         <a
                             class="nav-link active" href="personal.php"><i class="fas fa-user-alt"></i><span>Personal Users</span></a><a class="nav-link active" href="allusers.php"><i class="fas fa-user-friends"></i><span>All Users</span></a></li>
                 </ul>

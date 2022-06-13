@@ -34,7 +34,7 @@ if (isset($userAdd)) {
             <form class="" action="" method="post">
                 <div class="form-group pt-3">
                   <label for="name">Your name</label>
-                  <input type="text" name="name"  class="form-control">
+                  <input type="text" name="name"  maxlength='25'class="form-control">
                 </div>
                 <div class="form-group">
                   <label for="username">Your username</label>
@@ -46,7 +46,9 @@ if (isset($userAdd)) {
                 </div>
                 <div class="form-group">
                   <label for="mobile">Mobile Number</label>
-                  <input type="text" id="mobile" name="mobile" min="1" max="10" class="form-control" >
+                  <input type="number" name="mobile"  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+    type = "number"
+    maxlength = "10" class="form-control" >
                 </div>
                 <div class="form-group">
                   <label for="password">Password</label>

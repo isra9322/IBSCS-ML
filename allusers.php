@@ -126,6 +126,7 @@ if (isset($username)) {
                       <th  class="text-center">Email address</th>
                       <th  class="text-center">phone number</th>
                       <th  class="text-center">Status</th>
+                      <th  class="text-center">Start date</th>
                       <th  class="text-center">EXdate</th>
                       <th  width='25%' class="text-center">Action</th>
                     </tr>
@@ -174,6 +175,7 @@ if (isset($username)) {
                         <?php } ?>
 
                         </td>
+                        <td><span class="badge badge-lg badge-secondary text-white"><?php echo $users->formatDate($value->startdate);  ?></span></td>
                         <td><span class="badge badge-lg badge-secondary text-white"><?php echo $users->formatDate($value->startdate);  ?></span></td>
 
                         <td>

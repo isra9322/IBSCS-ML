@@ -15,6 +15,6 @@ elseif(Session::get('roleid') == '3'){
 }
 elseif(Session::get('roleid') == '1'){
 
-   header('Location:dash.php');
+   header('Location:dash.php?lan=en');
 }
 ?>

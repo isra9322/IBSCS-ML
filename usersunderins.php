@@ -1,3 +1,4 @@
+
 <?php
 include 'inc/hd.php';
 if(Session::get('roleid') != '1'){
@@ -27,7 +28,7 @@ if(Session::get('roleid') != '1'){
                 </a>
                 <hr class="sidebar-divider my-0">
                  <ul class="nav navbar-nav text-light" id="accordionSidebar">
-                    <li class="nav-item" role="presentation"><a class="nav-link active" href="dash.php"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a><a class="nav-link active" href="institiution.php"><i class="far fa-building"></i><span><strong>Institutions</strong></span></a>
+                    <li class="nav-item" role="presentation"><a class="nav-link active" href="index.php"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a><a class="nav-link active" href="institiution.php"><i class="far fa-building"></i><span><strong>Institutions</strong></span></a>
                         <a
                             class="nav-link active" href="personal.php"><i class="fas fa-user-alt"></i><span>Personal Users</span></a><a class="nav-link active" href="allusers.php"><i class="fas fa-user-friends"></i><span>All Users</span></a></li>
                 </ul>
@@ -97,7 +98,7 @@ if (isset($activeId)) {
       <div class="card ">
         <div class="card-header">
           <h3><i class="fas fa-users mr-2"></i>  <?php 
-          echo("users under institiution ".Session::get('nameofins'));
+          echo("users under institiution ".$_GET['nos']);
           ?><span class="float-right">Welcome! <strong>
             <span class="badge badge-lg badge-secondary text-white">
 <?php
@@ -122,7 +123,7 @@ if (isset($username)) {
                       <th  class="text-center">Name</th>
                       <th  class="text-center">Username</th>
                       <th  class="text-center">Email address</th>
-                      <th  class="text-center">ph number</th>
+                      <th  class="text-center">ph number</th> 
                       <th  class="text-center">Status</th>
                       <th  class="text-center">Ex date</th>
                       <th  width='25%' class="text-center">Action</th>
@@ -131,7 +132,7 @@ if (isset($username)) {
                   <tbody>
                     <?php
 
-                      $allUser = $users->listinsusers($_SESSION['nameofins']);
+                      $allUser = $users->listinsusers($_GET['nos']);
 
                       if ($allUser) {
                         $i = 0;
@@ -177,7 +178,7 @@ if (isset($username)) {
                     <?php if (Session::get("id") == $value->id) {
                       echo "disabled";
                     } ?>
-                             btn-sm " href="?remove=<?php echo $value->id;?>">Remove</a>
+                             btn-sm " href="?remove=<?php echo $value->id;?>&nos=$_GET['nos']">Remove</a>
 
                              <?php if ($value->status == '0') {  ?>
                                <a onclick="return confirm('Are you sure To Deactive ?')" class="btn btn-warning
@@ -190,7 +191,7 @@ if (isset($username)) {
                        <?php if (Session::get("id") == $value->id) {
                          echo "disabled";
                        } ?>
-                                btn-sm " href="?active=<?php echo $value->id;?>">Active</a>
+                                btn-sm " href="?active=<?php echo $value->id;?>&nos=$_GET['nos']">Active</a>
                              <?php } ?>
 
 

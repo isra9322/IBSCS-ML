@@ -38,7 +38,28 @@ class Users{
   }
 
 
+public function countausers(){
+   $sql = "SELECT * FROM tbl_users";
+      $stmt = $this->db->pdo->prepare($sql);
+      $result = $stmt->execute();
+      $au=$stmt->rowCount();
+      return $au;
+}
+public function countiusers(){
+     $sql = "SELECT * FROM inistitutionusers";
+      $stmt = $this->db->pdo->prepare($sql);
+      $result = $stmt->execute();
+      $iu=$stmt->rowCount();
+return $iu;
+}
+public function countpusers(){
 
+       $sql = "SELECT * FROM investoers";
+            $stmt = $this->db->pdo->prepare($sql);
+            $result = $stmt->execute();
+            $pu=$stmt->rowCount();
+          return $pu+1;
+}
   // User Registration Method
   public function userRegistration($data){
     $name = $data['name'];
@@ -124,6 +145,7 @@ class Users{
 
 
   }
+
   // Add New User By Admin
   public function addNewUserByAdmin($data){
     $nameofins=Session::get('nameofins');
@@ -178,7 +200,7 @@ class Users{
 <strong>Error !</strong> Email already Exists, please try another Email... !</div>';
         return $msg;
     }else{
-      $sql = "SELECT * FROM `tbl_users`";
+      $sql = "SELECT * FROM tbl_users";
       $stmt = $this->db->pdo->prepare($sql);
       $result = $stmt->execute();
       $r=$stmt->rowCount();
@@ -460,9 +482,10 @@ UPDATE investoers SET
     }
     //listof users in ins
      public function listinsusers($nameofins){
+      $names=$nameofins;
     $sql = "SELECT * FROM inistitutionusers WHERE nameofins=:n ORDER BY id DESC";
     $stmt = $this->db->pdo->prepare($sql);
-    $stmt->bindValue(':n', $nameofins);
+    $stmt->bindValue(':n', $names);
     $stmt->execute();
     return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
@@ -497,13 +520,14 @@ UPDATE investoers SET
        $stmt->bindValue(':n', $deactive);
        $result =   $stmt->execute();
         if ($result) {
-          echo "<script>location.href='index.php';</script>";
+          echo "<script>location.href='#';</script>";
           Session::set('msg', '<div class="alert alert-success alert-dismissible mt-3" id="flash-msg">
           <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
           <strong>Success !</strong> User account Diactivated Successfully !</div>');
+          
 
         }else{
-          echo "<script>location.href='index.php';</script>";
+          echo "<script>location.href='#';</script>";
           Session::set('msg', '<div class="alert alert-danger alert-dismissible mt-3" id="flash-msg">
     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
     <strong>Error !</strong> Data not Diactivated !</div>');
@@ -535,13 +559,13 @@ UPDATE investoers SET
        $stmt->bindValue(':n', $deactive);
        $result =   $stmt->execute();
         if ($result) {
-          echo "<script>location.href='index.php';</script>";
+          echo "<script>location.href='#';</script>";
           Session::set('msg', '<div class="alert alert-success alert-dismissible mt-3" id="flash-msg">
           <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
           <strong>Success !</strong> User account Diactivated Successfully !</div>');
 
         }else{
-          echo "<script>location.href='index.php';</script>";
+          echo "<script>location.href='#';</script>";
           Session::set('msg', '<div class="alert alert-danger alert-dismissible mt-3" id="flash-msg">
     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
     <strong>Error !</strong> Data not Diactivated !</div>');
@@ -574,13 +598,13 @@ UPDATE investoers SET
        $stmt->bindValue(':n', $deactive);
        $result =   $stmt->execute();
         if ($result) {
-          echo "<script>location.href='index.php';</script>";
+          echo "<script>location.href='#';</script>";
           Session::set('msg', '<div class="alert alert-success alert-dismissible mt-3" id="flash-msg">
           <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-          <strong>Success !</strong> User account Diactivated Successfully !</div>');
+          <strong>Success !</strong> User account Activated Successfully !</div>');
 
         }else{
-          echo "<script>location.href='index.php';</script>";
+          echo "<script>location.href='#';</script>";
           Session::set('msg', '<div class="alert alert-danger alert-dismissible mt-3" id="flash-msg">
     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
     <strong>Error !</strong> Data not Diactivated !</div>');
@@ -610,12 +634,12 @@ UPDATE investoers SET
        $stmt->bindValue(':n', $active);
        $result =   $stmt->execute();
         if ($result) {
-          echo "<script>location.href='index.php';</script>";
+          echo "<script>location.href='#';</script>";
           Session::set('msg', '<div class="alert alert-success alert-dismissible mt-3" id="flash-msg">
           <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
           <strong>Success !</strong> User account activated Successfully !</div>');
         }else{
-          echo "<script>location.href='index.php';</script>";
+          echo "<script>location.href='#';</script>";
           Session::set('msg', '<div class="alert alert-danger alert-dismissible mt-3" id="flash-msg">
     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
     <strong>Error !</strong> Data not activated !</div>');

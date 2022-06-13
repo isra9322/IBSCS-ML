@@ -27,7 +27,7 @@ if(Session::get('roleid') != '1'){
                 </a>
                 <hr class="sidebar-divider my-0">
                  <ul class="nav navbar-nav text-light" id="accordionSidebar">
-                    <li class="nav-item" role="presentation"><a class="nav-link active" href="dash.php"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a><a class="nav-link active" href="institiution.php"><i class="far fa-building"></i><span><strong>Institutions</strong></span></a>
+                    <li class="nav-item" role="presentation"><a class="nav-link active" href="index.php"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a><a class="nav-link active" href="institiution.php"><i class="far fa-building"></i><span><strong>Institutions</strong></span></a>
                         <a
                             class="nav-link active" href="personal.php"><i class="fas fa-user-alt"></i><span>Personal Users</span></a><a class="nav-link active" href="allusers.php"><i class="fas fa-user-friends"></i><span>All Users</span></a></li>
                 </ul>
@@ -42,14 +42,7 @@ if(Session::get('roleid') != '1'){
 
 
 
-
-
-
-
-
-
-
-        </div>
+</div></div>
                                 <?php
 
 
@@ -145,13 +138,15 @@ if (isset($username)) {
                         $i = 0;
                         foreach ($allUser as  $value) {
                           $i++;
-                          $_SESSION['nameofins']=$value->nameofins;
+                      
+
 
                      ?>
 
                       <tr class="text-center"
                       <?php if (Session::get("id") == $value->id) {
                         echo "style='background:#d9edf7' ";
+
                       } ?>
                       >
 
@@ -176,9 +171,9 @@ if (isset($username)) {
                         <td><span class="badge badge-lg badge-secondary text-white"><?php echo $users->formatDate($value->exdate);  ?></span></td>
 
                         <td>
-                          <?php if ( Session::get("roleid") == '1') {?>
+                          <?php if ( Session::get("roleid") == '1') { ?>
                             <a class="btn btn-success btn-sm
-                            " href="usersunderins.php">View</a>
+                            " href="usersunderins.php?nos=<?php echo $value->nameofins; ?>">View</a>
                             <a class="btn btn-info btn-sm " href="profile.php?id=<?php echo $value->id;?>">Edit</a>
                             <a onclick="return confirm('Are you sure To Delete ?')" class="btn btn-danger
                     <?php if (Session::get("id") == $value->id) {

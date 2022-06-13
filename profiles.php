@@ -65,7 +65,7 @@ if (isset($updateUser)) {
               </div>
               <div class="form-group">
                 <label for="mobile">phone Number</label>
-                <input type="text" id="mobile" name="mobile" value="<?php echo $getUinfo->mobile; ?>" class="form-control">
+                <input type="text" id="mobile" name="mobile" value="<?php echo $getUinfo->mobile; ?>"  maxlength="10" class="form-control">
               </div>
 
               <?php if (Session::get("roleid") == '1') { ?>
